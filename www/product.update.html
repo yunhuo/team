@@ -1,0 +1,62 @@
+<style>
+
+.to-wrapper {
+  line-height: 1;
+  height: 62px;
+  padding: 10px;
+}
+
+.to-image {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+
+.to-name {
+  font-weight: 500;
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.to-email {
+  font-size: 14px;
+  opacity: 0.4;
+}
+
+.text-input {
+  margin-top: 4px;
+}
+
+.textarea {
+  margin-top: 4px;
+}
+
+</style>
+
+<ons-page ng-controller="ProductController">
+      <ons-toolbar>
+        <div class="right"><ons-toolbar-button ng-click="goback()">取消</ons-toolbar-button></div>
+        <div class="center">修改商品</div>
+      </ons-toolbar>
+
+      <ons-list modifier="inset" style="margin-top: 10px">
+        <ons-list-item class="to-wrapper">
+              <h3>{{update.profile.name}}</h3>
+        </ons-list-item>
+        <ons-list-item>
+	  <p>{{update.profile.describe}}</p>
+        </ons-list-item>
+
+      </ons-list>
+
+      <div style="padding: 10px 9px">
+        <ons-button modifier="large" style="margin: 0 auto;" ng-click="doRemove(update)">
+          删除
+        </ons-button>
+	</div>
+    
+      </div>
+
+
+    </ons-page>

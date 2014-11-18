@@ -40,6 +40,7 @@
 	}
   }
   </style>
+  <ons-page ng-controller="ActivityController">
 <ons-toolbar>
 	<div class="left">
 	    <ons-back-button ng-click="go('activity.list')">返回</ons-back-button>
@@ -49,13 +50,11 @@
            	发布活动 
           </div>
           <div class="right">
-            <ons-toolbar-button>
-              <ons-icon icon="fa-gear" fixed-width="false" style="vertical-align: -4px;"></ons-icon>
+            <ons-toolbar-button ng-click="doCreate()">
+	    	保存
             </ons-toolbar-button>
           </div>
         </ons-toolbar>
-
-
 
 
   <div class='fb-main'></div>
@@ -64,6 +63,7 @@
   <script src="dist/formbuilder.js"></script>
 
   <script>
+  	var formData = [];
     $(function(){
       fb = new Formbuilder({
         selector: '.fb-main',
@@ -109,8 +109,9 @@
       });
 
       fb.on('save', function(payload){
-        console.log(payload);
+      	formData = payload;
+        //console.log(payload);
       })
     });
   </script>
-
+</ons-page>

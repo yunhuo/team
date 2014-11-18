@@ -12,7 +12,12 @@ var CMD = {
 	ONLINE_UPDATE: 'online:update',
 	ARTICLE_CREATE: 'article:create',
 	ARTICLE_GET_LIST: 'article:get:list',
-	ARTICLE_REMOVE: 'article:remove'
+	ARTICLE_REMOVE: 'article:remove',
+	CARD_CREATE: 'card:create',
+	CARD_GET_LIST: 'card:get:list',
+	PRODUCT_GET_LIST: 'product:get:list',
+	PRODUCT_CREATE: 'product:create',
+	PRODUCT_REMOVE: 'product:remove'
 };
 
 module.controller('AppController', function(socket, $rootScope, $scope){
@@ -31,6 +36,8 @@ module.controller('AppController', function(socket, $rootScope, $scope){
 	$scope.articles = [];
 	$scope.myTitle = '';
 	$scope.chats = [];
+	$scope.cards = [];
+	$scope.products = [];
 	$scope.groupStatus = {};
 	console.log('app');
 	$scope.afterLoginPage = '';
@@ -164,7 +171,14 @@ module.controller('AppController', function(socket, $rootScope, $scope){
 		console.log(ret);
 		$scope.groupStatus = ret.profile;
 	});
-
+	socket.on(CMD.CARD_GET_LIST, function(ret){
+		console.log(ret);
+		$scope.cards = ret;
+	});
+	socket.on(CMD.PRODUCT_GET_LIST, function(ret){
+		console.log(ret);
+		$scope.products = ret;
+	});
 })
 
 .controller('LoginController', function(socket, $rootScope, $scope){
@@ -276,5 +290,60 @@ module.controller('AppController', function(socket, $rootScope, $scope){
       		$('#chatAudio')[0].play();
 		*/
     		msg.text = '';
+	};
+})
+
+.controller('CardController', function(socket, $scope){
+	if($scope.cards.length == 0){
+		console.log('card:list'+$scope.group._id);
+		socket.emit(CMD.CARD_GET_LIST, $scope.group._id);
+	}
+	$scope.doCreate = function(c){
+		console.log(c);	
+		socket.emit(CMD.CARD_CREATE, {
+			groupId: $scope.group._id,
+			phone: c.phone,
+			level: c.level,
+			score: c.score
+		});
+	};
+})
+
+.controller('ProductController', function(socket, $scope){
+	if($scope.products.length == 0){
+		socket.emit(CMD.PRODUCT_GET_LIST, $scope.group._id);
+	}
+	$scope.doCreate = function(p){
+		console.log(p);
+		var describe = (p.describe)?p.describe:$('.froala-element').html();
+		if(describe && p.name){
+			
+		socket.emit(CMD.PRODUCT_CREATE, {
+			groupId: $scope.group._id,
+			name: p.name,
+			price: p.price,
+			available: p.available, 
+			describe: describe,
+			images:uploadImages
+		});
+		};
+	};
+
+	$scope.update = $scope._go_arg;
+	$scope.doRemove = function(update){
+		console.log(update);
+		if(update._id){
+			socket.emit(CMD.PRODUCT_REMOVE, {
+				groupId: $scope.group._id,
+				productId: update._id
+			});
+		}
+	};
+
+})
+
+.controller('ActivityController', function(socket, $scope){
+	$scope.doCreate = function(){
+		console.log(formData);
 	};
 })

@@ -1,3 +1,105 @@
+	<link href="froala/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="froala/css/froala_editor.min.css" rel="stylesheet" type="text/css">
+  <link href="froala/css/froala_style.min.css" rel="stylesheet" type="text/css">
+
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        section {
+            width: 99%;
+            margin: auto;
+            text-align: left;
+        }
+	.froala-editor .f-basic{
+	}
+	#edit{
+		margin-top:5px !important;
+	}
+	.froala-element{
+		height:300px !important;
+		overflow-y:scroll;
+		background:white !important;
+	}
+	
+	input[type=text], input[type=password] {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  outline: none;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+	.button{
+		width:200px;
+		margin:0 auto;
+	}
+	
+	#mobileText{
+		display:none;
+	}
+.textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  line-height: normal;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  vertical-align: top;
+  resize: none;
+  outline: none;
+  padding: 5px 5px 5px 5px;
+  font-size: 15px;
+  font-weight: 400;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #1f1f21;
+  letter-spacing: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+}
+.textarea:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+.textarea::-webkit-input-placeholder,
+.textarea::-moz-placeholder,
+.textarea:-ms-input-placeholder {
+  color: #999;
+}
+
+
+  @media  (max-width:720px){
+  	section{
+		display:none;
+	}
+	#editor{
+		display:none;
+	}
+	#mobileText{
+		display:block;
+	}
+} 
+    </style>
+ 
+
 <style>
 
 .to-wrapper {
@@ -34,7 +136,7 @@
 
 </style> 
 
-<ons-page>
+<ons-page ng-controller="ProductController">
 <ons-toolbar>
 	<div class="left">
 	    <ons-back-button ng-click="go('products')">返回</ons-back-button>
@@ -48,28 +150,67 @@
 
       <ons-list modifier="inset" style="margin-top: 10px">
         <ons-list-item>
-          <input type="text" class="text-input text-input--transparent" placeholder="名称" style="width: 100%">
+          <input type="text" class="text-input text-input--transparent" placeholder="名称" style="width: 100%" ng-model="p.name">
         </ons-list-item>
 	<ons-list-item>
-	<input type="text" class="text-input text-input--transparent" placeholder="价格" style="width: 100%">
+	<input type="text" class="text-input text-input--transparent" placeholder="价格" style="width: 100%" ng-model="p.price">
 	</ons-list-item>
 	<ons-list-item>
-	<input type="text" class="text-input text-input--transparent" placeholder="数量" style="width: 100%">
+	<input type="text" class="text-input text-input--transparent" placeholder="数量" style="width: 100%" ng-model="p.available">
 	</ons-list-item>
 
 
-        <ons-list-item>
-          <textarea class="textarea textarea--transparent" placeholder="详情" style="width: 100%; height: 100px;"></textarea>
-        </ons-list-item>
+        <ons-list-item id="mobileText">
+          <textarea  class="textarea textarea--transparent" placeholder="详情" style="width: 100%; height: 100px;" ng-model="p.describe"></textarea>
+	  </ons-list-item>
+	  </ons-list>
 
 
-      </ons-list>
+ <section id="editor">
+      <div id='edit' style="margin-top: 30px;">
+        <h1>Click and edit</h1>
+        <p><a href="http://google.com" title="Aenean sed hendrerit">Aenean sed hendrerit</a> velit. Nullam eu mi dolor. Maecenas et erat risus. Nulla ac auctor diam, non aliquet ante. Fusce ullamcorper, ipsum id tempor lacinia, sem tellus malesuada libero, quis ornare sem massa in orci. Sed dictum dictum tristique. Proin eros turpis, ultricies eu sapien eget, ornare rutrum ipsum. Pellentesque eros nisl, ornare nec ipsum sed, aliquet sollicitudin erat. Nulla tincidunt porta vehicula.</p>
+
+      </div>
+  </section>
+
+
+
+
 
       <div style="padding: 10px 9px">
-        <ons-button modifier="large" style="margin: 0 auto;">
+        <ons-button modifier="large" style="margin: 0 auto;" ng-click="doCreate(p)">
          保存 
         </ons-button>
       </div>
+ <script src="froala/js/libs/jquery-1.11.1.min.js"></script>
+  <script src="froala/js/froala_editor.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="froala/js/froala_editor_ie8.min.js"></script>
+  <![endif]-->
+  <script src="froala/js/plugins/tables.min.js"></script>
+  <script src="froala/js/plugins/lists.min.js"></script>
+  <script src="froala/js/plugins/colors.min.js"></script>
+  <script src="froala/js/plugins/font_family.min.js"></script>
+  <script src="froala/js/plugins/font_size.min.js"></script>
+  <script src="froala/js/plugins/block_styles.min.js"></script>
+  <script src="froala/js/plugins/media_manager.min.js"></script>
+  <script src="froala/js/plugins/video.min.js"></script>
+  <script src="froala/js/plugins/char_counter.min.js"></script>
+
+  <script>
+  	var uploadImages = [];
+      $(function(){
+        $('#edit').editable({
+		inlineMode: false,
+		imageUploadURL: 'https://huo.io/uploadImage',
+		imageUploadParams: {id: 'my_editor'},
+		crossDomain: true
+	});
+	$('.froala-element').height($(document).height()-$('.froala-editor').height()-80);
+
+      });
+  </script>
 
 
     </ons-page>
