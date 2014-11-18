@@ -1,0 +1,73 @@
+<style>
+
+.to-wrapper {
+  line-height: 1;
+  height: 62px;
+  padding: 10px;
+}
+
+.to-image {
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+.to-name {
+  font-weight: 500;
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.to-email {
+  font-size: 14px;
+  opacity: 0.4;
+}
+
+.text-input {
+  margin-top: 4px;
+}
+
+.textarea {
+  margin-top: 4px;
+}
+
+</style>
+
+<ons-page ng-controller="GroupSettingsController">
+      <ons-toolbar>
+        <div class="right"><ons-toolbar-button ng-click="goback()">取消</ons-toolbar-button></div>
+        <div class="center">修改联系信息</div>
+      </ons-toolbar>
+
+      <ons-list modifier="inset" style="margin-top: 10px">
+        <ons-list-item>
+	地址：
+          <input type="text" class="text-input text-input--transparent" placeholder="{{group.profile.address}}" style="width: 100%" ng-model="update.address">
+        </ons-list-item>
+
+	<ons-list-item>
+	联系电话：
+          <input type="text" class="text-input text-input--transparent" placeholder="{{group.profile.phone}}" style="width: 100%" ng-model="update.phone">
+        </ons-list-item>
+
+     <ons-list-item>
+	邮箱：
+          <input type="text" class="text-input text-input--transparent" placeholder="{{group.profile.email}}" style="width: 100%" ng-model="update.email">
+        </ons-list-item>
+
+     <ons-list-item>
+	微博：
+          <input type="text" class="text-input text-input--transparent" placeholder="{{group.profile.weibo}}" style="width: 100%" ng-model="update.weibo">
+        </ons-list-item>
+
+      </ons-list>
+
+      <div style="padding: 10px 9px">
+        <ons-button modifier="large" style="margin: 0 auto;" class='button--outline' ng-click="doUpdateProfile(update)">
+          保存
+        </ons-button>
+      </div>
+
+
+    </ons-page>

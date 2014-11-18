@@ -1,0 +1,148 @@
+<style>
+.list-item-note {
+  position: absolute;
+    right: 36px;
+      top: 0px;
+        font-size: 14px;
+	}
+
+	.list-item-note > .notification {
+	  margin-top: 12px;
+	  }
+.profile-card {
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 30px 0;
+  line-height: 1.4;
+  background-color: #33393c;
+  text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0px;
+}
+
+.profile-image {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-color: black;
+  border 1px solid white;
+  box-shadow:rgba(0, 0, 0, 0.2) 0px 2px 0px 0px;
+  -webkit-box-shadow:rgba(0, 0, 0, 0.2) 0px 2px 0px 0px;
+}
+
+.profile-name {
+  margin: 20px 0 0 0;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.profile-id {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.profile-desc {
+  font-size: 15px;
+  opacity: 0.6;
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.info-col {
+  height: 60px;
+  line-height: 1;
+  padding: 12px 0 12px 4px;
+  text-align:center;
+}
+
+.info-num {
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.info-unit {
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.4;
+}
+
+</style>
+
+<ons-page>
+      <ons-toolbar>
+        <div class="left">
+	<ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+
+	</div>
+        <div class="center">社群状态</div>
+        <div class="right">
+          <ons-toolbar-button><ons-icon icon="ion-gear-a" style="vertical-align: -4px; font-size: 28px;"></ons-icon></ons-toolbar-button>
+        </div>
+      </ons-toolbar>
+
+      <div class="profile-card">
+
+        <div class="profile-name">{{group.name}}</div>
+        <div class="profile-id">@{{group.profile.address}}</div>
+        <div class="profile-desc"></div>
+
+      </div>
+
+      <ons-list>
+        <ons-list-item>
+          <ons-row>
+            <ons-col class="info-col">
+              <div class="info-num">23,287</div>
+              <div class="info-unit">会员</div>
+            </ons-col>
+            <ons-col class="info-col">
+              <div class="info-num">{{groupStatus.articles|number}}</div>
+              <div class="info-unit">文章</div>
+            </ons-col>
+            <ons-col class="info-col">
+              <div class="info-num">38,323</div>
+              <div class="info-unit">活动</div>
+            </ons-col>
+	<ons-col class="info-col">
+              <div class="info-num">3,323</div>
+              <div class="info-unit">成长</div>
+            </ons-col>
+
+          </ons-row>
+        </ons-list-item>
+      </ons-list>
+
+      <ons-list modifier="inset" style="margin-top: 10px">
+        <ons-list-item modifier="chevron" ng-click="go('chat')">
+          新消息
+	  <span class="list-item-note">
+	              <span class="notification">{{chats.length}}</span>
+		                </span>
+        </ons-list-item>
+
+        <ons-list-item modifier="chevron">
+          新订单
+	  <span class="list-item-note">
+	              <span class="notification">10</span>
+		                </span>
+        </ons-list-item>
+
+        <ons-list-item modifier="chevron">
+          新会员
+	  <span class="list-item-note">
+	              <span class="notification">10</span>
+		                </span>
+        </ons-list-item>
+
+      </ons-list>
+
+      <br>
+
+
+    </ons-page>
+

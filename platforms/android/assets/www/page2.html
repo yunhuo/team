@@ -1,0 +1,122 @@
+<style>
+.button {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  line-height: normal;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  height: auto;
+  text-decoration: none;
+  padding: 4px 10px;
+  font-size: 17px;
+  line-height: 32px;
+  letter-spacing: 0;
+  color: #fff;
+  text-shadow: 0 1px none;
+  vertical-align: middle;
+  background-color: #1284ff;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 0px solid currentColor;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.button:hover {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.button:active {
+  background-color: #1284ff;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #fff;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  opacity: 0.2;
+}
+.button:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0;
+}
+.button:disabled,
+.button[disabled] {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+.button--outline {
+  background-color: transparent;
+  border: 1px solid #1284ff;
+  color: #1284ff;
+}
+.button--outline:active {
+  background-color: rgba(18, 132, 255, 0.2);
+  border: 1px solid #1284ff;
+  color: #1284ff;
+  opacity: 1;
+}
+.button--outline:hover {
+  border: 1px solid #1284ff;
+  -webkit-transition: 0;
+  -moz-transition: 0;
+  -o-transition: 0;
+  transition: 0;
+}
+</style>
+
+<ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Page 22</div>
+      </ons-toolbar>
+
+
+      <ons-row style="margin-top: 100px;">
+        <ons-col align="center">
+	<button class="button button--outline" onclick="window.plugins.socialsharing.share('Message only')">Button</button>
+	<button class="button button--outline" onclick="window.plugins.socialsharing.share(null, null, 'http://www.baidu.com/img/bdlogo.gif', null)">Button</button>
+	<button class="button button--outline" onclick="window.plugins.socialsharing.shareViaSMS('My cool message', null, function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})">Button</button>
+          <ons-button modifier="light" ng-click="menu.toggleMenu()">
+            Toggle Menu
+          </ons-button>
+        </ons-col>
+      </ons-row>
+
+    </ons-page>
+

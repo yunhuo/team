@@ -1,0 +1,293 @@
+<style>
+.button-bar {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  display: table;
+  table-layout: fixed;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  margin: 0;
+  border: none;
+}
+.button-bar__item {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  display: table-cell;
+  width: auto;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  position: relative;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.button-bar__item > input {
+  position: absolute;
+  overflow: hidden;
+  right: 0px;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  padding: 0;
+  border: 0;
+  opacity: 0.001;
+  z-index: 1;
+  vertical-align: top;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.button-bar__item:first-child > .button-bar__button {
+  border-left: 1px solid #ac62ed;
+  border-right: 1px solid #ac62ed;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.button-bar__item:last-child > .button-bar__button {
+  border-right: 1px solid #ac62ed;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.button-bar__button {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  -webkit-border-radius: inherit;
+  border-radius: inherit;
+  background-color: transparent;
+  color: #ac62ed;
+  border: 0px solid #ac62ed;
+  border-top: 1px solid #ac62ed;
+  border-bottom: 1px solid #ac62ed;
+  border-right: 1px solid #ac62ed;
+  font-weight: 400;
+  padding: 0 8px;
+  height: 27px;
+  line-height: 27px;
+  font-size: 13px;
+  width: 100%;
+  -webkit-transition: background-color 0.2s linear, color 0.2s linear;
+  -moz-transition: background-color 0.2s linear, color 0.2s linear;
+  -o-transition: background-color 0.2s linear, color 0.2s linear;
+  transition: background-color 0.2s linear, color 0.2s linear;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.button-bar__button:active,
+:active + .button-bar__button {
+  background-color: rgba(172, 98, 237, 0.2);
+  border: 0px solid #ac62ed;
+  border-top: 1px solid #ac62ed;
+  border-bottom: 1px solid #ac62ed;
+  border-right: 1px solid #ac62ed;
+  height: 27px;
+  line-height: 27px;
+  font-size: 13px;
+  width: 100%;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.button-bar__item.active > .button-bar__button,
+:checked + .button-bar__button {
+  background-color: #ac62ed;
+  color: #fff;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.button-bar__button:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+.button-bar__button:hover {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.button-bar__button:focus {
+  outline: 0;
+}
+
+
+
+.list-item-container {
+  line-height: 1;
+  font-size: 14px;
+  padding: 15px 0px 15px 15px;
+}
+
+.list-item-left {
+  width: 60px;
+  margin-right: -60px;
+  float: left;
+}
+
+.list-item-right {
+  width: 100%;
+  float: right;
+}
+
+.list-item-content {
+  margin-left: 50px;
+  margin-right: 30px;
+}
+
+.avator {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+
+.name {
+  font-weight: 500;
+  line-height: 16px;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.desc {
+  line-height: 16px;
+}
+
+.lucent {
+  opacity: 0.4;
+}
+
+.sub-navigation-bar{
+	border-bottom:0;
+}
+</style>
+
+    <ons-page ng-controller='OrdersController'>
+<ons-toolbar>
+	<div class="left">
+          <ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+
+          <div class="center">
+           	订单管理 
+          </div>
+        </ons-toolbar>
+<div class="navigation-bar sub-navigation-bar">
+          <div class="navigation-bar__center">
+
+
+<div class="button-bar" style="width:280px;margin:0 auto;">
+  <div class="button-bar__item" ng-click="filter(1)">
+    <input type="radio" name="segment-a" checked>
+    <button class="button-bar__button">未支付</button>
+  </div>
+  <div class="button-bar__item" ng-click="filter(2)">
+    <input type="radio" name="segment-a">
+    <button class="button-bar__button">已支付</button>
+  </div>
+  <div class="button-bar__item">
+    <input type="radio" name="segment-a">
+    <button class="button-bar__button">进行中</button>
+  </div>
+<div class="button-bar__item">
+    <input type="radio" name="segment-a">
+    <button class="button-bar__button">已完成</button>
+  </div>
+<div class="button-bar__item">
+    <input type="radio" name="segment-a">
+    <button class="button-bar__button">已关闭</button>
+  </div>
+
+
+
+
+</div>
+
+</div></div>
+
+      <ons-list>
+
+        <ons-list-item modifier="chevron" class="list-item-container">
+          <div class="list-item-left">
+            <img src="images/4548488065_dae90277db_q.jpg" class="avator">
+          </div>
+          <div class="list-item-right">
+            <div class="list-item-content">
+              <div class="name">Daniel
+                <span class="lucent">@Danny</span>
+              </div>
+
+              <span class="desc">Hi, how are you? Glad to hear you are interested in our project.</span>
+            </div>
+          </div>
+        </ons-list-item>
+
+        <ons-list-item modifier="chevron" class="list-item-container">
+          <div class="list-item-left">
+            <img src="images/3936883765_39121dcab5_q.jpg" class="avator">
+          </div>
+          <div class="list-item-right">
+            <div class="list-item-content">
+              <div class="name">John</div>
+              <span class="desc">I am a teacher at a elementary school.</span>
+            </div>
+          </div>
+        </ons-list-item>
+
+        <ons-list-item modifier="chevron" class="list-item-container">
+          <div class="list-item-left">
+            <img src="images/5388738458_ea9fd2a7d7_q.jpg" class="avator">
+          </div>
+          <div class="list-item-right">
+            <div class="list-item-content">
+              <div class="name">Lucy</div>
+
+              <span class="desc">Hello, nice meeting you <i class="fa fa-meh-o" style="color: orangered;"></i></span>
+            </div>
+          </div>
+        </ons-list-item>
+
+        <ons-list-item modifier="chevron" class="list-item-container">
+          <div class="list-item-left">
+            <img src="images/3152983303_4c0fd3140b_q.jpg" class="avator">
+          </div>
+          <div class="list-item-right">
+            <div class="list-item-content">
+              <div class="name">Elizabeth
+                <span class="lucent">@Elizabeth</span>
+              </div>
+              <span class="desc"><ons-icon icon="fa-phone" fixed-width="false" size="13px"></ons-icon> 1-800-123-4567</span>
+              <br>
+              <span class="desc">Please call me when you're ready.</span>
+            </div>
+          </div>
+        </ons-list-item>
+      </ons-list>
+
+
+    </ons-page>
+

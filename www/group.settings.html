@@ -1,0 +1,84 @@
+<style>
+.list-item-note {
+  position: absolute;
+    right: 36px;
+      top: 0px;
+        font-size: 14px;
+	}
+
+	.list-item-note > .notification {
+	  margin-top: 12px;
+	  }
+
+.lucent {
+  opacity: 0.4;
+  }
+
+.profile-wrapper {
+  padding: 16px 10px 0 10px;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+.profile-name {
+  font-size: 18px;
+  padding: 4px 0 2px 0;
+}
+
+.profile-email {
+  font-size: 15px;
+  color:orange;
+}
+
+
+
+</style>
+
+<ons-page ng-controller="GroupSettingsController">
+      <ons-toolbar>
+        <div class="left">
+	<ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+	</div>
+        <div class="center">社群设置</div>
+      </ons-toolbar>
+	  <ons-row class="profile-wrapper">
+        <ons-col width="60px" class="profile-image-wrapper">
+          <img ng-src="{{me.profile.avatar|bucket:'mini'}}" class="profile-image">
+        </ons-col>
+
+        <ons-col>
+          <div class="profile-name">{{me.profile.name}}</div>
+          <div class="profile-email">{{myTitle}}</div>
+        </ons-col>
+
+      </ons-row>
+
+      </div>
+      <ons-list modifier="inset" style="margin-top: 10px">
+        <ons-list-item modifier="chevron" ng-click="go('group.settings.team')">
+         团队设置 
+	 <span class="list-item-note lucent">{{admins.length|number}}人</span>
+        </ons-list-item>
+
+        <ons-list-item modifier="chevron" ng-click="go('group.settings.profile')">
+          联系信息设置
+	  <span class="list-item-note lucent">{{group.profile.address|limitTo:10}}</span>
+        </ons-list-item>
+
+        <ons-list-item modifier="chevron" ng-click="go('group.settings.name')">
+          修改名称
+	  <span class="list-item-note lucent">{{group.name}}</span>
+        </ons-list-item>
+
+      </ons-list>
+      <br>
+
+    </ons-page>
+

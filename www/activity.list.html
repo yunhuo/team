@@ -1,0 +1,120 @@
+<style>
+
+.plan-list {
+  border-top: none;
+  background-image: none !important;
+}
+
+.plan {
+  line-height: 1;
+  padding: 0;
+}
+
+.plan-left {
+  text-align: right;
+  padding: 10px 10px 10px 0;
+}
+
+.plan-center {
+  background-color: #3399ff;
+  opacity: 0.5;
+}
+
+.plan-right {
+  padding: 10px 40px 10px 10px;
+}
+
+.plan-date {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.plan-duration {
+  font-size: 11px;
+  opacity: 0.4;
+}
+
+.plan-name {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.plan-info {
+  opacity: 0.4;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+</style>
+
+      <ons-page>
+        <ons-toolbar>
+	<div class="left">
+          <ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+
+
+          <div class="center">
+            活动管理
+          </div>
+          <div class="right">
+            <ons-toolbar-button ng-click="go('activity')">
+              <ons-icon icon="ion-plus" fixed-width="false" style="vertical-align: -4px;"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+
+        <div class="navigation-bar">
+          <div class="navigation-bar__center">
+
+            <!-- segment control -->
+            <div class="button-bar" style="width:200px; margin:8px auto 0;">
+              <div class="button-bar__item">
+                <input type="radio" name="navi-segment-a" checked>
+                <div class="button-bar__button">Today</div>
+              </div>
+              <div class="button-bar__item">
+                <input type="radio" name="navi-segment-a">
+                <div class="button-bar__button">Tomorrow</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <ons-list class="plan-list">
+          <ons-list-item modifier="chevron" class="plan" ng-repeat="a in [1,2,3,4,5,6,7,8,9,10]">
+            <ons-row>
+              <ons-col width="80px" class="plan-left">
+                <div class="plan-date">5:30 PM</div>
+                <div class="plan-duration">1h</div>
+              </ons-col>
+
+              <ons-col width="6px" class="plan-center" ng-style="{backgroundColor:a % 3 == 1 ? '#3399ff' : '#ccc'}">
+              </ons-col>
+
+              <ons-col class="plan-right">
+                <div class="plan-name">Onsen UI Meetup</div>
+
+                <div class="plan-info">
+                  <div ng-hide="a % 4 == 0">
+                    <ons-icon icon="fa-phone"></ons-icon>123-456-789
+                  </div>
+
+                  <div ng-hide="a % 3 == 0">
+                    <ons-icon icon="fa-map-marker"></ons-icon>Moscone, San Francisco
+                  </div>
+                </div>
+              </ons-col>
+            </ons-row>
+          </ons-list-item>
+
+        </ons-list>
+
+
+
+      </ons-page>

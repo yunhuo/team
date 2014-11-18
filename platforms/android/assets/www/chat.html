@@ -1,0 +1,137 @@
+  <script src="froala/js/libs/jquery-1.11.1.min.js"></script>
+ 
+<script type="text/javascript">
+$(function(){
+	$('#chat').height($(window).height() - 150);
+	$("#chatData").focus();
+  $('<audio id="chatAudio"><source src="notify.ogg" type="audio/ogg"><source src="notify.mp3" type="audio/mpeg"><source src="notify.wav" type="audio/wav"></audio>').appendTo('body');
+  $("#trig").on("click",function(){
+    var a = $("#chatData").val().trim();
+    if(a.length > 0){
+	$("#chatData").val('');
+	$("#chatData").focus();
+     $("<li></li>").html('<img src="small.jpg"/><span>'+a+'</span>').appendTo("#chatMessages");
+	  $("#chat").animate({"scrollTop": $('#chat')[0].scrollHeight}, "slow");
+      $('#chatAudio')[0].play();
+    }
+  });
+});
+</script>
+<style type="text/css">
+#chatBox {width:97%; margin:5px;text-align:right;}
+#chatBox > h3 {  padding:3px; color:#c3c3c3; text-align:right;font-size:13px;font-weight:normal}
+#chat { height:320px; overflow-y:auto; max-width:400px; text-align:left;}
+#chat > ul {padding-left:0}
+#chat > ul > li { padding:3px;clear:both;padding:4px;margin:10px 0px 5px 0px;overflow:auto ;}
+#chatMessages{list-style:none;}
+
+#chatMessages > li > img { width:35px;height:35px;border-radius:50%;float:left }
+#chatMessages > li > span { float:left;margin-left:5px}
+#chatDatar { padding:5px; margin:5px; border-radius:5px; border:1px solid #999; }
+#trig { padding: 4px;border: solid 1px #333;background-color: #133783;color:#fff;font-weight:bold }
+
+
+.text-input--underbar {
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  line-height: normal;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  vertical-align: top;
+  outline: none;
+  line-height: 1;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #fff;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #1f1f21;
+  padding: 4px 8px 0 8px;
+  margin: 0;
+  font-size: 15px;
+  height: 31px;
+  font-weight: 400;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #ddd;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+}
+.text-input--underbar:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #ddd;
+}
+.text-input--underbar:disabled::-webkit-input-placeholder,
+.text-input--underbar:disabled::-moz-placeholder,
+.text-input--underbar:disabled:-ms-input-placeholder {
+  color: #999;
+  border: none;
+  background-color: transparent;
+}
+.text-input--underbar:invalid {
+  border: 1px solid #ddd;
+  color: #1f1f21;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #ddd;
+}
+
+#triger{
+	margin:0 auto;
+	margin-top:10px;	
+	width:17%;
+}
+</style>
+
+ <ons-toolbar>
+        <div class="left">
+	    <ons-back-button ng-click="go('home')">返回</ons-back-button>
+
+	</div>
+        <div class="center">新消息</div>
+        <div class="right">
+          <ons-toolbar-button><ons-icon icon="ion-gear-a" style="vertical-align: -4px; font-size: 28px;"></ons-icon></ons-toolbar-button>
+        </div>
+      </ons-toolbar>
+
+
+
+	<div width='100%' ng-controller="ChatController">
+    <div id='chatBox' style='margin-top:5px'>
+        <h3>{{online|number}} 人在线</h3>
+        <div id='chat'>
+            <ul id='chatMessages'>
+	    	<li ng-repeat="c in chats">
+			<img ng-src="{{c.profile.user.profile.avatar|bucket:'mini'}}"/><span>{{c.profile.text}}</span>
+	    	</li>
+            </ul>
+        </div>
+		<!--
+		<input type="text" id="chatData" placeholder="Message" ng-model="msg.text"/>
+		-->
+		<input type="text" id="chatData" class="text-input--underbar" placeholder="text" style="width:80%" ng-model="msg.text">
+	    <input type="button" value=" Send " id="triger" class='button' ng-click="doSend(msg)"/>
+    </div>
+	</div>
+

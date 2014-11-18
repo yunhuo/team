@@ -1,0 +1,75 @@
+<style>
+
+.to-wrapper {
+  line-height: 1;
+  height: 62px;
+  padding: 10px;
+}
+
+.to-image {
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+.to-name {
+  font-weight: 500;
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.to-email {
+  font-size: 14px;
+  opacity: 0.4;
+}
+
+.text-input {
+  margin-top: 4px;
+}
+
+.textarea {
+  margin-top: 4px;
+}
+
+</style>  
+
+<ons-page ng-controller="AccountController">
+      <ons-toolbar>
+        <div class="right"><ons-toolbar-button ng-click="goback()">取消</ons-toolbar-button></div>
+        <div class="center">修改个人信息</div>
+      </ons-toolbar>
+
+      <ons-list modifier="inset" style="margin-top: 10px">
+        <ons-list-item class="to-wrapper">
+          <ons-row>
+            <ons-col width="52px">
+              <img ng-src="{{me.profile.avatar|bucket:'mini'}}" width="42" class="to-image">
+            </ons-col>
+	    <ons-col>
+	    </ons-col>
+          </ons-row>
+        </ons-list-item>
+        <ons-list-item>
+	姓名：
+          <input type="text" class="text-input text-input--transparent" ng-model="update.name" placeholder="{{me.profile.name}}" style="width: 100%">
+        </ons-list-item>
+	 <ons-list-item>
+	常居：
+          <input type="text" class="text-input text-input--transparent" ng-model="update.address" placeholder="{{me.profile.address}}" style="width: 100%">
+        </ons-list-item>
+
+
+
+
+      </ons-list>
+
+      <div style="padding: 10px 9px">
+        <ons-button modifier="large" ng-click="doAccountUpdate(update)" style="margin: 0 auto;">
+         保存 
+        </ons-button>
+      </div>
+
+
+    </ons-page>
+

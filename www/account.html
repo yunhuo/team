@@ -1,0 +1,115 @@
+<style>
+.edit-profile{
+	float:right;
+	opacity:0.5;
+	cursor:default;
+	font-size:14px;
+}
+.profile-wrapper {
+  padding: 16px 10px 0 10px;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border: inset 1px rgba(0, 0, 0, 0.3);
+}
+
+.profile-name {
+  font-size: 18px;
+  padding: 4px 0 2px 0;
+}
+
+.profile-email {
+  font-size: 15px;
+  opacity: 0.4;
+}
+
+.switch--list-item {
+  margin-right: 0px;
+}
+
+.settings-header {
+  font-weight: 500;
+  font-size: 14px;
+  opacity: 0.4;
+  padding: 10px 0 0px 10px;
+  margin-bottom: -4px;
+}
+
+.settings-list {
+  margin-top: 10px;
+}
+
+</style> 
+
+<ons-page>
+      <ons-toolbar>
+	<div class="left">
+          <ons-toolbar-button ng-click="menu.toggle()">
+            <ons-icon icon="ion-navicon" size="28px" fixed-width="false"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+
+        <div class="center">我的帐户</div>
+      </ons-toolbar>
+
+      <ons-row class="profile-wrapper">
+        <ons-col width="60px" class="profile-image-wrapper">
+          <img ng-src="{{me.profile.avatar|bucket:'mini'}}" class="profile-image">
+        </ons-col>
+
+        <ons-col>
+	<span class='edit-profile' ng-click="go('account.update')">修改</span>
+          <div class="profile-name">{{me.profile.name}}</div>
+          <div class="profile-email">{{me.profile.address}} </div>
+        </ons-col>
+
+      </ons-row>
+
+      <div class="settings-header">帐号绑定</div>
+
+      <ons-list modifier="inset" class="settings-list">
+        <ons-list-item>
+	<ons-icon icon="fa-weibo"></ons-icon>
+          新浪微博
+          <ons-switch modifier="list-item"></ons-switch>
+        </ons-list-item>
+
+        <ons-list-item>
+          <ons-icon icon="fa-tencent-weibo"></ons-icon>
+	  QQ空间
+          <ons-switch modifier="list-item" checked></ons-switch>
+        </ons-list-item>
+	<ons-list-item>
+          <ons-icon icon="fa-envelope"></ons-icon>
+	  邮箱
+          <ons-switch modifier="list-item" checked></ons-switch>
+        </ons-list-item>
+
+      </ons-list>
+
+      <div class="settings-header">安全设置</div>
+
+      <ons-list modifier="inset" class="settings-list">
+        <ons-list-item modifier="chevron">
+	<ons-icon icon="fa-lock"></ons-icon>
+          重设密码
+        </ons-list-item>
+
+      </ons-list>
+
+      <br>
+
+      <ons-list modifier="inset" class="settings-list">
+        <ons-list-item modifier="tappable">
+          <ons-icon icon="fa-power-off" style="opacity: 0.8"></ons-icon>
+         退 出 
+        </ons-list-item>
+      </ons-list>
+
+
+    </ons-page>
+

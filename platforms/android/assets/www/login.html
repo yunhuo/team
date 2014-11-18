@@ -1,0 +1,65 @@
+<style>
+.logo-m{
+	text-align:center;
+	width:130px;
+	margin:0 auto;
+	margin-bottom:20px;
+}
+
+.login-form {
+  text-align: center;
+  width: 80%;
+  margin: 60px auto 0;
+}
+
+input[type=text], input[type=password] {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  outline: none;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.login-button {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.forgot-password {
+  display: block;
+  margin: 8px auto 0 auto;
+  font-size: 14px;
+}
+
+
+</style>
+
+<ons-page ng-controller="LoginController">
+  <ons-toolbar>
+        <div class="center">登录</div>
+  <div class="right">
+            <ons-toolbar-button ng-click="go('register')">
+	    <button class='button--quiet'>注册</button>
+            </ons-toolbar-button>
+          </div>
+       
+      </ons-toolbar>
+
+
+      <div class="login-form">
+	<img src="img/logo_purple3.png-medium" class="logo-m">
+
+
+	 <input type="text" class="text-input--underbar" placeholder="手机号" value="" ng-model="login.phone">
+        <input type="password" class="text-input--underbar" placeholder="密码" value="" ng-model="login.password">
+        <br><br>
+        <ons-button modifier="large" class="login-button" ng-click="doLogin(login)">让我登录让我飞</ons-button>
+        <br><br>
+        <ons-button modifier="quiet" class="forgot-password">忘记密码?</ons-button>	
+
+
+      </div>
+
+    </ons-page>
+

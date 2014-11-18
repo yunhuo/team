@@ -1,0 +1,98 @@
+    <style>
+.list-item-note {
+  position: absolute;
+  right: 36px;
+  top: 0px;
+  font-size: 14px;
+}
+
+.list-item-note > .notification {
+  margin-top: 12px;
+}
+
+.lucent {
+  opacity: 0.4;
+}
+
+
+.list-item-action {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  font-size: 20px;
+  opacity: 1;
+  z-index:1000;
+}
+
+.list-item-action > ons-icon {
+  margin-top: 14px;
+}
+</style>  
+
+    <ons-page modifier="menu-page">
+      <ons-toolbar modifier="transparent">
+		<div class="left logo"><ons-icon icon="fa-circle-o"></ons-icon>云活</div>
+      	<div class="right">
+            <ons-toolbar-button class="menu-close" ng-click="menu.close()">
+              <ons-icon icon="fa-compress"></ons-icon>
+            </ons-toolbar-button>
+          </div>	
+      </ons-toolbar>
+
+      <ons-list class="bottom-menu-list">
+        <ons-list-item class="bottom-menu-item" ng-click="go('home')">
+          <ons-icon icon="fa-home"></ons-icon>
+         社群状态 
+        </ons-list-item>
+
+        <ons-list-item class="bottom-menu-item" ng-click="go('article.list')">
+          <ons-icon icon="fa-pencil"></ons-icon>
+          文章管理
+	   <span class="list-item-note lucent">{{groupStatus.articles|number}}</span>
+        </ons-list-item>
+
+	<ons-list-item class="bottom-menu-item" ng-click="go('activity.list')">
+          <ons-icon icon="fa-flag"></ons-icon>
+          活动管理
+	   <span class="list-item-note lucent">121</span>
+ 
+	<!--
+	 <span class="list-item-action">
+            <ons-icon icon="fa-plus-square" size="22px"></ons-icon>
+          </span>	 
+		-->
+        </ons-list-item>
+
+        <ons-list-item class="bottom-menu-item" ng-click="go('card.list')">
+          <ons-icon icon="fa-male"></ons-icon>
+          会员管理
+	   <span class="list-item-note lucent">4,121</span>
+        </ons-list-item>
+
+	<ons-list-item class="bottom-menu-item" ng-click="go('orders')">
+	<ons-icon icon="fa-list"></ons-icon>
+         订单管理 
+        </ons-list-item>
+
+	<ons-list-item class="bottom-menu-item" ng-click="go('products')">
+	<ons-icon icon="fa-cubes"></ons-icon>
+        商品管理
+        </ons-list-item>
+
+        <ons-list-item class="bottom-menu-item" ng-click="go('group.settings')">
+	<ons-icon icon="fa-gear"></ons-icon>
+          社群设置
+        </ons-list-item>
+
+       <ons-list-item class="bottom-menu-item" ng-click="go('account')">
+	<ons-icon icon="fa-user"></ons-icon>
+         我的帐户 
+        </ons-list-item>
+ 
+        <ons-list-item class="bottom-menu-item" ng-click="go('support')">
+	<ons-icon icon="fa-support"></ons-icon>
+         意见反馈 
+        </ons-list-item>
+
+      </ons-list>
+    </ons-page>

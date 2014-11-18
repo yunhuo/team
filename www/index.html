@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>My App</title>  
+  
+  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">  
+  <link rel="stylesheet" href="styles/onsen-css-components.min.css">  
+  <link rel="stylesheet" href="styles/app.css"/>
+
+  <script src="froala/js/libs/jquery-1.11.1.min.js"></script>
+ 
+  <script src="lib/onsen/js/angular/angular.js"></script>    
+  <script src="lib/onsen/js/onsenui.js"></script>    
+  <script src="lib/socket.io-1.1.0.js"></script>
+
+  <script src="cordova.js"></script>
+
+  <script>
+  document.addEventListener("deviceready", onDeviceReady, false);    
+  function onDeviceReady() {    
+    navigator.splashscreen.hide();    
+    }    
+
+    var module = angular.module('app', ['onsen']);
+  </script>
+  <script src="js/controllers.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/filters.js"></script>
+
+</head>
+
+<body ng-controller="AppController">    
+	<ons-modal var="modal">
+  {{msg}}
+</ons-modal> 
+
+ 
+  <ons-sliding-menu
+    menu-page="menu.html" main-page="login.html" side="left"
+    var="menu" type="reveal" max-slide-distance="260px" swipable="false">
+  </ons-sliding-menu>
+
+ 
+</body>
+</html>

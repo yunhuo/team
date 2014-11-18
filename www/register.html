@@ -1,0 +1,78 @@
+<style>
+.logo-m{
+	text-align:center;
+	width:130px;
+	margin:0 auto;
+	margin-bottom:20px;
+}
+
+.formarea {
+  text-align: center;
+  width: 80%;
+  margin: 60px auto 0;
+}
+
+input[type=text], input[type=password] {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  outline: none;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.login-button {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.forgot-password {
+  display: block;
+  margin: 8px auto 0 auto;
+  font-size: 14px;
+}
+
+.width-half{
+	float:left;
+	width:48% !important;
+}
+</style>
+
+
+
+<ons-page>
+      <ons-toolbar>
+        <div class="center">新用户注册</div>
+    <div class="right">
+       <ons-toolbar-button ng-click="go('login')">
+	    <button class='button--quiet'>登录</button>
+            </ons-toolbar-button>
+	    </div>
+      </ons-toolbar>
+
+      <div class="formarea">
+
+        <div class="form-row">
+          <input type="text" class="text-input--underbar width-full" placeholder="手机号" value="">
+        </div>
+ 
+ 	<div class="form-row">
+          <input type="text" class="text-input--underbar width-half" placeholder="验证码" value="">
+          <button class="button button--outline width-half" style="margin:4px; 0 0 4px;float:right">发送验证码</button>
+        </div>
+
+        <div class="form-row">
+          <input type="password" class="text-input--underbar width-full" placeholder="密码" value="">
+        </div>
+
+        <div class="lucent">
+          <p class="note">Password - 6 characters or more</p>
+        </div>
+
+        <div class="vspc form-row">
+          <ons-button modifier="large--cta">注册</ons-button>
+        </div>
+      </div>
+
+    </ons-page>
+

@@ -1,0 +1,75 @@
+<style>
+
+.to-wrapper {
+  line-height: 1;
+  height: 62px;
+  padding: 10px;
+}
+
+.to-image {
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+.to-name {
+  font-weight: 500;
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.to-email {
+  font-size: 14px;
+  opacity: 0.4;
+}
+
+.text-input {
+  margin-top: 4px;
+}
+
+.textarea {
+  margin-top: 4px;
+}
+
+</style>
+
+<ons-page>
+<ons-toolbar>
+	<div class="left">
+	    <ons-back-button ng-click="go('card.list')">返回</ons-back-button>
+        </div>
+
+          <div class="center">
+           	新建会员 
+          </div>
+        </ons-toolbar>
+	
+
+      <ons-list modifier="inset" style="margin-top: 10px">
+        <ons-list-item>
+          <input type="text" class="text-input text-input--transparent" placeholder="手机号" style="width: 100%">
+        </ons-list-item>
+    <ons-list-item>
+          <input type="text" class="text-input text-input--transparent" placeholder="等级" style="width: 100%">
+        </ons-list-item>
+    <ons-list-item>
+          <input type="text" class="text-input text-input--transparent" placeholder="积分" style="width: 100%">
+        </ons-list-item>
+
+
+
+
+
+
+
+      </ons-list>
+
+      <div style="padding: 10px 9px">
+        <ons-button modifier="large" style="margin: 0 auto;">
+         保存 
+        </ons-button>
+      </div>
+
+
+    </ons-page>

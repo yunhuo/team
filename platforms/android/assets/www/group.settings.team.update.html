@@ -1,0 +1,71 @@
+<style>
+
+.to-wrapper {
+  line-height: 1;
+  height: 62px;
+  padding: 10px;
+}
+
+.to-image {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+
+.to-name {
+  font-weight: 500;
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.to-email {
+  font-size: 14px;
+  opacity: 0.4;
+}
+
+.text-input {
+  margin-top: 4px;
+}
+
+.textarea {
+  margin-top: 4px;
+}
+
+</style>
+
+<ons-page ng-controller="GroupSettingsController">
+      <ons-toolbar>
+        <div class="right"><ons-toolbar-button ng-click="goback()">取消</ons-toolbar-button></div>
+        <div class="center">修改团队成员</div>
+      </ons-toolbar>
+
+      <ons-list modifier="inset" style="margin-top: 10px">
+        <ons-list-item class="to-wrapper">
+          <ons-row>
+            <ons-col width="52px">
+              <img ng-src="{{update.user.profile.avatar|bucket:'mini'}}" width="42" class="to-image">
+            </ons-col>
+            <ons-col>
+              <div class="to-name">{{update.user.profile.name}}</div>
+              <div class="to-email">@{{update.user.profile.address}}</div>
+            </ons-col>
+          </ons-row>
+        </ons-list-item>
+        <ons-list-item>
+	职位：
+          <input type="text" class="text-input text-input--transparent" placeholder="{{update.title}}" ng-model="update.title" style="width: 100%">
+        </ons-list-item>
+
+      </ons-list>
+
+      <div style="padding: 10px 9px">
+        <ons-button modifier="large" style="margin: 0 auto;" ng-click="doUpdateTeam(update)">
+          保存
+        </ons-button>
+	</div>
+    
+      </div>
+
+
+    </ons-page>
